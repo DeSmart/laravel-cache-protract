@@ -12,6 +12,7 @@ before_script:
 
 script: 
   - vendor/bin/phpspec run -f dot
+  - vendor/bin/phpcs --standard=psr2 src
 
 matrix:
   allow_failures:

@@ -23,24 +23,19 @@ class FileStore extends \Illuminate\Cache\FileStore
     {
         $path = $this->path($key);
 
-        if (false === $this->files->exists($path))
-        {
+        if (false === $this->files->exists($path)) {
             return null;
         }
 
-        try
-        {
+        try {
             $expire = substr($contents = $this->files->get($path), 0, 10);
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return null;
         }
 
         $value = unserialize(substr($contents, 10));
 
-        if (time() >= $expire)
-        {
+        if (time() >= $expire) {
             $this->put($key, $value, $this->prolongTime);
 
             return null;
