@@ -1,0 +1,4 @@
+suites:
+    deform:
+        namespace: DeSmart\CacheProtract
+        psr4_prefix: DeSmart

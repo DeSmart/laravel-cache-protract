@@ -1,0 +1,23 @@
+{
+    "name": "desmart/laravel-cache-protract",
+    "description": "File based cache prolonger for Laravel",
+    "require": {
+        "illuminate/cache": "~4.1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "DeSmart\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@desmart.com"
+        }
+    ],
+    "require-dev": {
+        "illuminate/filesystem": "~4.1.0",
+        "phpspec/phpspec": "~2.1.0@dev"
+    }
+}
