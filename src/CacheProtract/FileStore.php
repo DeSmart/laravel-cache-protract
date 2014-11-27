@@ -33,15 +33,17 @@ class FileStore extends \Illuminate\Cache\FileStore
             return null;
         }
 
-        $value = unserialize(substr($contents, 10));
+        $serialized = substr($contents, 10);
 
         if (time() >= $expire) {
-            $this->put($key, $value, $this->prolongTime);
+            // serialization is heavy - in this case it's not necessary so it's better
+            // to put contents back to file rather then unserialize, and serialize back (@see self::put())
+            $this->files->put($path, $this->expiration($this->prolongTime).$serialized);
 
             return null;
         }
 
-        return $value;
+        return unserialize($serialized);
     }
 
     /**
